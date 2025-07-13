@@ -10,17 +10,6 @@ Mobile app development is the process of creating software applications that run
 - Deployment: Publish the app on platforms like Google Play or Apple App Store.
 - Maintenance: Regular updates, bug fixes, and feature enhancements post-launch.
 
-📱 Mobile App Development: A Quick Overview
-Mobile app development is the process of creating software applications that run on mobile devices like smartphones and tablets. It blends design, coding, testing, and deployment to deliver apps that are functional, user-friendly, and engaging.
-🛠️ Key Stages of Mobile App Development
-- Ideation & Planning: Define the app’s purpose, target audience, and core features.
-- Design: Focus on UI (visuals) and UX (user experience) to ensure intuitive navigation.
-- Development: Code the app using languages like Swift (iOS), Kotlin/Java (Android), or cross-platform tools like Flutter and React Native.
-- Testing: Check for bugs, performance issues, and usability across devices.
-- Deployment: Publish the app on platforms like Google Play or Apple App Store.
-- Maintenance: Regular updates, bug fixes, and feature enhancements post-launch.
-
-Absolutely, Shweta! Let’s break down the different types of mobile apps so you can choose the style that best fits your goals. 📲
 📱 Types of Mobile Apps
 | Type | Description | Examples | 
 | Native | Built specifically for one platform (Android or iOS). Offers the best performance and access to device features. | WhatsApp, Instagram | 
@@ -55,4 +44,197 @@ Loyalty programs, exclusive offers, and personalized experiences keep users comi
 - Competitive Advantage
 A well-designed app sets you apart in crowded markets, showing innovation and commitment to user experience.
 Want to explore how these benefits apply to your specific app idea—or curious about how to maximize them with the right tech stack? I’d love to help you map it out! 😄
+
+code:
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        Button startButton = findViewById(R.id.startButton);
+        EditText numOfQues = findViewById(R.id.numOfQues);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    int num = Integer.parseInt(numOfQues.getText().toString());
+
+                    if(num<=0 || num>30){
+                        numOfQues.setText("");
+                        Toast.makeText(MainActivity.this,"Please enter any number from 1 to 30 ",Toast.LENGTH_SHORT).show();
+                    }
+
+
+                    Intent intent = new Intent(getApplicationContext(),GuessTheLocation.class);
+                    intent.putExtra("Number",num);
+                    startActivity(intent);
+
+                }catch (Exception e){
+                    numOfQues.setText("");
+                    Toast.makeText(MainActivity.this,"Please enter valid number ",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
+
+
+}
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        Button startButton = findViewById(R.id.startButton);
+        EditText numOfQues = findViewById(R.id.numOfQues);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    int num = Integer.parseInt(numOfQues.getText().toString());
+
+                    if(num<=0 || num>30){
+                        numOfQues.setText("");
+                        Toast.makeText(MainActivity.this,"Please enter any number from 1 to 30 ",Toast.LENGTH_SHORT).show();
+                    }
+
+
+                    Intent intent = new Intent(getApplicationContext(),GuessTheLocation.class);
+                    intent.putExtra("Number",num);
+                    startActivity(intent);
+
+                }catch (Exception e){
+                    numOfQues.setText("");
+                    Toast.makeText(MainActivity.this,"Please enter valid number ",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
+
+
+}Sure, Shweta! Here's a practical example from a Mobile Application Development (MAD) lab exercise using Android Studio with Java. This app displays a simple login screen and validates user input. I’ll include both the code and the expected output. 🚀
+
+🔐 MAD Practical: Login App with Validation
+🧩 What It Does
+- User enters a username and password
+- App checks if both fields are filled
+- Displays a success or error message using a Toast
+
+🧰 Code Files
+1. activity_main.xml – UI Layout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
+
+
+2. MainActivity.java – App Logic
+package com.example.loginapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText username, password;
+    Button login;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        username = findViewById(R.id.editTextUsername);
+        password = findViewById(R.id.editTextPassword);
+        login = findViewById(R.id.buttonLogin);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
+
+                if (user.equals("admin") && pass.equals("1234")) {
+                    Toast.makeText(MainActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}
+
+
+
+🎯 Output Display
+- Initial Screen:
+- Two input fields: “Username” and “Password”
+- One button: “Login”
+- User Action:
+- Enter admin as username and 1234 as password
+- Tap “Login”
+- Result:
+- A Toast message pops up:
+👉 “Login Successful!”
+- If incorrect credentials are entered:
+👉 “Invalid Credentials”
+
+Want to add animations, connect to a database, or switch to Kotlin or Flutter? I can help you build out the next level of this app. Just say the word 😄
+
 
