@@ -2,6 +2,7 @@
 mobile app development
 📱 Mobile App Development: A Quick Overview
 Mobile app development is the process of creating software applications that run on mobile devices like smartphones and tablets. It blends design, coding, testing, and deployment to deliver apps that are functional, user-friendly, and engaging.
+
 🛠️ Key Stages of Mobile App Development
 - Ideation & Planning: Define the app’s purpose, target audience, and core features.
 - Design: Focus on UI (visuals) and UX (user experience) to ensure intuitive navigation.
@@ -94,54 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-        Button startButton = findViewById(R.id.startButton);
-        EditText numOfQues = findViewById(R.id.numOfQues);
-
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    int num = Integer.parseInt(numOfQues.getText().toString());
-
-                    if(num<=0 || num>30){
-                        numOfQues.setText("");
-                        Toast.makeText(MainActivity.this,"Please enter any number from 1 to 30 ",Toast.LENGTH_SHORT).show();
-                    }
-
-
-                    Intent intent = new Intent(getApplicationContext(),GuessTheLocation.class);
-                    intent.putExtra("Number",num);
-                    startActivity(intent);
-
-                }catch (Exception e){
-                    numOfQues.setText("");
-                    Toast.makeText(MainActivity.this,"Please enter valid number ",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-    }
-
-
-}Sure, Shweta! Here's a practical example from a Mobile Application Development (MAD) lab exercise using Android Studio with Java. This app displays a simple login screen and validates user input. I’ll include both the code and the expected output. 🚀
 
 🔐 MAD Practical: Login App with Validation
 🧩 What It Does
@@ -235,6 +188,6 @@ public class MainActivity extends AppCompatActivity {
 - If incorrect credentials are entered:
 👉 “Invalid Credentials”
 
-Want to add animations, connect to a database, or switch to Kotlin or Flutter? I can help you build out the next level of this app. Just say the word 😄
+
 
 
